@@ -39,15 +39,14 @@ function App() {
     setMessages(updatedMessages);
     // const result = await getResponse(content);
     const result = await openai_chat_completion(content);
-    console.log(result);
     setDisabled(false);
-    // setMessages([
-    //   ...updatedMessages.map((message) => ({ ...message })),
-    //   {
-    //     role: result.role,
-    //     content: result.content,
-    //   },
-    // ]);
+    setMessages([
+      ...updatedMessages.map((message) => ({ ...message })),
+      {
+        role: result.role,
+        content: result.content,
+      },
+    ]);
   };
 
   return (

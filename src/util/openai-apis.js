@@ -3,8 +3,7 @@ import OpenAI from "openai";
 const OPENAI_MODEL = "gpt-4o-mini";
 
 const openai = new OpenAI({
-  apiKey:
-    "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",
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
