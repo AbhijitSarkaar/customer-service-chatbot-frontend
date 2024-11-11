@@ -3,7 +3,6 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 import { useState } from "react";
 import ChatInterface from "./components/ChatInterface";
-import openai_chat_completion from "./util/openai-apis";
 
 function App() {
   const [messages, setMessages] = useState([
@@ -15,7 +14,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
 
   const getResponse = async (content) => {
-    const result = await fetch("https://167.172.150.104:8888/chat-response", {
+    const result = await fetch("http://167.172.150.104:8888/chat-response", {
       method: "POST",
       body: JSON.stringify({
         content,
@@ -37,8 +36,7 @@ function App() {
       },
     ];
     setMessages(updatedMessages);
-    // const result = await getResponse(content);
-    const result = await openai_chat_completion(content);
+    const result = await getResponse(content);
     setDisabled(false);
     setMessages([
       ...updatedMessages.map((message) => ({ ...message })),
